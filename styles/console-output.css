@@ -1,0 +1,153 @@
+/**
+ * Estils per ConsoleOutput
+ */
+
+.console-output {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 13px;
+}
+
+/* Header consola */
+.console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #2d2d30;
+    border-bottom: 1px solid #3e3e42;
+}
+
+.console-title {
+    font-weight: bold;
+    color: #cccccc;
+    font-size: 12px;
+}
+
+.console-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.console-btn {
+    background: transparent;
+    border: none;
+    color: #cccccc;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+
+.console-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Contingut consola */
+.console-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    line-height: 1.6;
+}
+
+/* Línia de consola */
+.console-line {
+    display: flex;
+    margin-bottom: 2px;
+    word-wrap: break-word;
+}
+
+.console-timestamp {
+    color: #858585;
+    margin-right: 8px;
+    flex-shrink: 0;
+    font-size: 11px;
+}
+
+.console-text {
+    flex: 1;
+    white-space: pre-wrap;
+}
+
+/* Tipus de missatges */
+.console-log {
+    color: #d4d4d4;
+}
+
+.console-error {
+    color: #f48771;
+    font-weight: 500;
+}
+
+.console-error .console-timestamp {
+    color: #f48771;
+}
+
+.console-success {
+    color: #89d185;
+}
+
+.console-success .console-timestamp {
+    color: #89d185;
+}
+
+.console-warn {
+    color: #dcdcaa;
+}
+
+.console-warn .console-timestamp {
+    color: #dcdcaa;
+}
+
+.console-info {
+    color: #4fc1ff;
+}
+
+.console-info .console-timestamp {
+    color: #4fc1ff;
+}
+
+.console-debug {
+    color: #858585;
+    font-style: italic;
+}
+
+/* Scrollbar personalitzat */
+.console-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.console-content::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.console-content::-webkit-scrollbar-thumb {
+    background: #424242;
+    border-radius: 4px;
+}
+
+.console-content::-webkit-scrollbar-thumb:hover {
+    background: #4e4e4e;
+}
+
+/* Animació d'entrada */
+@keyframes consoleLineIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.console-line {
+    animation: consoleLineIn 0.15s ease-out;
+}

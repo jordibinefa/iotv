@@ -1,0 +1,12 @@
+dig00_ca;Entrades i sortides digitals bàsiques (bit);Entrades i sortides digitals bàsiques emprant bessons connectables (doutbit)
+dig00_es;Entradas y salidas digitales básicas (bit);Entradas y salidas básicas usando gemelos conectables (doutbit)
+dig00_en;Basic Digital IO (bit);Basic digital IO using connectable twins (doutbit)
+dout02v3;Basic Digital IO (byte);Basic digital IO using twins (dout)
+ldr;LDR;LDR twin using overlay
+bme280sensor;BME280;BME280 twin using overlay
+rgbwanalog1dac3adc;RGBW analog;RGBW analog twin using overlay. 1DAC, 3ADC
+rgbw-digital;RGBW digital;RGBW digital twin using overlay
+conveyor02v3;Conveyor;Conveyor speed control 
+buttonRelay;Neon switch and Relay;Neon switch and conceptual relay
+toyMqtt;Toy MQTT;Control of a Toy twin using JSON on MQTT
+elevator01;Elevator;Elevator 3-floor control system with digital twin

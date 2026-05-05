@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT-Vertebrae v2 - Simulador Educatiu IoT</title>
+    
+    <!-- Favicon (opcional) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔌</text></svg>">
+    
+    <!-- Estils -->
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/menu-bar.css">
+    <link rel="stylesheet" href="styles/windows.css">
+    <link rel="stylesheet" href="styles/digital-twin.css">
+    <link rel="stylesheet" href="styles/console-output.css">
+
+    <!-- CodeMirror 6: Bundle pre-construït (una sola còpia de @codemirror/state) -->
+    <script src="lib/codemirror6-bundle.min.js"></script>
+</head>
+<body>
+    <!-- MenuBar es crearà aquí automàticament -->
+    
+    <!-- Container principal (per sota del MenuBar) -->
+    <div id="app-container">
+        <!-- WindowManager crearà les finestres aquí -->
+    </div>
+
+    <!-- Scripts - ORDRE MOLT IMPORTANT -->
+    
+	<!-- 0. External Libraries -->
+	<script src="https://unpkg.com/mqtt@5.3.0/dist/mqtt.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+	<!-- 1. Core: Sistema base -->
+	<script src="js/core/event-bus.js"></script>
+	<script src="js/core/memory-plc.js"></script>
+	<script src="js/core/iotv-api-v2.js"></script>
+	<script src="js/core/paho-mqtt.js"></script>
+
+	<!-- 2. Utils: Configuració i traduccions -->
+	<script src="js/utils/config-manager.js"></script>
+	<script src="js/utils/i18n.js"></script>
+	<script src="js/utils/code-editor-manager.js"></script>
+	<script src="js/utils/io-config-editor.js"></script>
+	<script src="js/utils/toast-utils.js"></script>
+	<script src="js/utils/json-viewer.js"></script>
+	<script src="js/utils/webserial-shim.js"></script>
+
+	<!-- 3. UI Components: Interfície -->
+	<script src="js/ui/window-manager.js"></script>
+	<script src="js/ui/digital-twin.js"></script>
+	<script src="js/vertebrae-config.js"></script>
+	<script src="js/bessons/vertebrae-config-validator.js"></script>
+	<script src="js/bessons/coherence-validator.js"></script>
+	<script src="js/bessons/preset-editor-component.js"></script>
+	<script src="js/canvas-helpers-v2.js"></script>
+	<script src="js/ui/canvas-twin.js"></script>
+	<script src="js/ui/console-output.js"></script>
+	<script src="js/ui/global-overview.js"></script>
+	<script src="js/ui/graphical-editor.js"></script>
+	<script src="js/ui/menu-bar.js"></script>
+
+	<!-- 4. Editor: Scripts i exemples -->
+	<script src="js/editor/script-examples.js"></script>
+	<script src="js/editor/script-editor.js"></script>
+	<script src="js/editor/python-console.js"></script>
+
+	<!-- 5. Bessons: Configuració i bessons físics -->
+	<script src="js/ioconfig.js"></script>
+	<script src="js/bessons/besso-config-validator.js"></script>
+	<script src="js/bessons/besso-manager.js"></script>
+	<script src="js/bessons/engine.js"></script>
+	<script src="js/bessons/pont-h.js"></script>
+	<script src="js/bessons/cinta.js"></script>
+	<script src="js/bessons/besso-config-editor.js"></script>
+	<script src="js/bessons/twin-io.js"></script>
+	
+	<!-- 5.5. Project Management: Gestió de projectes -->
+	<script src="js/project/project-dialogs.js"></script>
+	<script src="js/project/project-manager.js"></script>
+	<script src="js/project/autosave-manager.js"></script>
+	
+	<!-- Tests (Només per desenvolupament) -->
+	<script src="js/bessons/coherence-validator.test.js"></script>
+
+	<!-- 6. App: Bootstrap i lògica principal -->
+	<script src="js/app.js"></script>
+
+    <!-- Missatge de benvinguda a consola del navegador -->
+    <script>
+        console.log('%c🔌 IoT-Vertebrae v2.0', 'font-size: 20px; font-weight: bold; color: #3498db;');
+        console.log('%cSimulador Educatiu d\'IoT', 'font-size: 14px; color: #2ecc71;');
+        console.log('%cDesenvollat per Jordi - 2026', 'font-size: 12px; color: #95a5a6;');
+        console.log('');
+        console.log('💡 Consells:');
+        console.log('  • Prem F5 per executar scripts');
+        console.log('  • Usa window.app per debugging');
+        console.log('  • Consulta window.iotv per API');
+        console.log('  • EventBus.setDebugMode(true) per logs detallats');
+    </script>
+</body>
+</html>

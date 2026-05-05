@@ -1,0 +1,313 @@
+/**
+ * Estils per WindowManager
+ * Finestres modals estil IDE modern (VSCode/IntelliJ)
+ */
+
+/* Contenidor de finestres */
+#windows-container {
+    position: fixed;
+    top: 36px; /* Sota la menu-bar */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 36px - 20px); /* Reserva 20px mínim per taskbar */
+    pointer-events: none;
+    z-index: 10050;
+}
+
+/* Finestra individual */
+.window {
+    position: absolute;
+    background: #2c3e50;
+    border: 1px solid #34495e;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.window.active {
+    border-color: #3498db;
+    box-shadow: 0 8px 32px rgba(52, 152, 219, 0.3);
+}
+
+.window.maximized {
+    border-radius: 0;
+    border: none;
+}
+
+/* Header de la finestra */
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #34495e;
+    border-bottom: 1px solid #2c3e50;
+    cursor: move;
+    user-select: none;
+    min-height: 40px;
+}
+
+.window.active .window-header {
+    background: #3d5266;
+}
+
+.window-title {
+    color: #ecf0f1;
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Controls de la finestra */
+.window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.window-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: #ecf0f1;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+.window-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.window-minimize:hover {
+    background: rgba(241, 196, 15, 0.2);
+}
+
+.window-maximize:hover {
+    background: rgba(46, 204, 113, 0.2);
+}
+
+.window-close:hover {
+    background: rgba(231, 76, 60, 0.8);
+}
+
+/* Contingut de la finestra */
+.window-content {
+    flex: 1;
+    overflow: auto;
+    background: #1e1e1e;
+    color: #ecf0f1;
+    padding: 15px;
+}
+
+/* Scrollbar personalitzat per finestres */
+.window-content::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.window-content::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Resizer (cantonada inferior dreta) */
+.window-resizer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    cursor: nwse-resize;
+    z-index: 10;
+}
+
+.window-resizer::before {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid #7f8c8d;
+    border-bottom: 2px solid #7f8c8d;
+    opacity: 0.5;
+}
+
+.window-resizer:hover::before {
+    opacity: 1;
+}
+
+/* Taskbar per finestres minimitzades */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 20px;
+    background: #2c3e50;
+    border-top: 1px solid #34495e;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    z-index: 20000;
+    overflow-x: auto;
+    overflow-y: visible;
+    box-sizing: border-box;
+}
+
+.taskbar-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #34495e;
+    border: 1px solid #3d5266;
+    border-radius: 6px;
+    color: #ecf0f1;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+.taskbar-button:hover {
+    background: #3d5266;
+    border-color: #3498db;
+}
+
+.taskbar-icon {
+    font-size: 16px;
+}
+
+.taskbar-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Scrollbar taskbar */
+.taskbar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.taskbar::-webkit-scrollbar-track {
+    background: #2c3e50;
+}
+
+.taskbar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
+
+.taskbar::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .window {
+        border-radius: 0;
+    }
+    
+    .window-header {
+        padding: 10px;
+    }
+    
+    .window-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+    
+    .taskbar {
+        height: 56px;
+    }
+    
+    .taskbar-button {
+        padding: 10px 14px;
+    }
+}
+
+/* Animacions */
+@keyframes windowFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.window {
+    animation: windowFadeIn 0.15s ease-out;
+}
+
+/* Drag & Resize feedback */
+.window-header:active {
+    cursor: grabbing;
+}
+
+.window-resizer:active {
+    cursor: nwse-resize;
+}
+
+/* States */
+.window.dragging {
+    opacity: 0.9;
+}
+
+.window.resizing {
+    user-select: none;
+}
+
+/* ─── Python Console: splitter arrossegable ─── */
+.pyconsole-splitter {
+    height: 6px;
+    background: #34495e;
+    cursor: row-resize;
+    flex-shrink: 0;
+    position: relative;
+    transition: background 0.15s;
+}
+
+.pyconsole-splitter:hover,
+.pyconsole-splitter:active {
+    background: #3498db;
+}
+
+.pyconsole-splitter::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 1px;
+}

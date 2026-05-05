@@ -1,0 +1,314 @@
+/**
+ * Estils per DigitalTwin - Bessó Digital IoT-Vertebrae
+ */
+
+.digital-twin {
+    background: #2c3e50;
+    border-radius: 8px;
+    padding: 20px;
+    color: #ecf0f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Header */
+.twin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #34495e;
+}
+
+.twin-header h3 {
+    color: #3498db;
+    margin: 0;
+    font-size: 20px;
+}
+
+.twin-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2ecc71;
+    animation: pulse-status 2s infinite;
+}
+
+@keyframes pulse-status {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.status-text {
+    color: #95a5a6;
+}
+
+/* Seccions */
+.twin-section {
+    margin-bottom: 25px;
+    background: #34495e;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.twin-section h4 {
+    color: #e67e22;
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Grup Digital (costelles A/B) */
+.digital-group {
+    margin-bottom: 15px;
+}
+
+.digital-group:last-child {
+    margin-bottom: 0;
+}
+
+.group-label {
+    color: #3498db;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* LEDs container */
+.leds-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding: 10px;
+    background: #2c3e50;
+    border-radius: 5px;
+}
+
+/* LED individual */
+.led {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.led-light {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 3px solid #34495e;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.led-light.on {
+    background: #2ecc71;
+    border-color: #27ae60;
+    box-shadow: 
+        0 0 10px #2ecc71,
+        0 0 20px #2ecc71,
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    animation: led-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes led-glow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 10px #2ecc71,
+            0 0 20px #2ecc71,
+            inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 0 15px #2ecc71,
+            0 0 30px #2ecc71,
+            inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.led-label {
+    color: #95a5a6;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Contenidor analògic */
+.analog-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.analog-channel {
+    background: #2c3e50;
+    padding: 12px;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+}
+
+.analog-channel.dac {
+    border-left-color: #2ecc71;
+}
+
+.analog-channel.adc {
+    border-left-color: #3498db;
+}
+
+/* Channel header */
+.channel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.channel-label {
+    color: #ecf0f1;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.channel-value {
+    color: #3498db;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Barra analògica */
+.analog-bar {
+    height: 24px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin: 8px 0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.analog-fill {
+    height: 100%;
+    background: #2ecc71;
+    transition: width 0.3s ease, background 0.3s ease;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.analog-range {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* Controls ADC */
+.adc-control {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.adc-slider {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: #34495e;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.adc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background 0.2s;
+}
+
+.adc-slider::-webkit-slider-thumb:hover {
+    background: #2980b9;
+}
+
+.adc-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.adc-reset {
+    padding: 6px 12px;
+    background: #7f8c8d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: background 0.2s;
+}
+
+.adc-reset:hover {
+    background: #6c7a89;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .leds-container {
+        gap: 6px;
+        padding: 8px;
+    }
+    
+    .led-light {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .led-label {
+        font-size: 10px;
+    }
+    
+    .analog-container {
+        gap: 12px;
+    }
+}
+
+/* Scrollbar personalitzat */
+.digital-twin::-webkit-scrollbar {
+    width: 8px;
+}
+
+.digital-twin::-webkit-scrollbar-track {
+    background: #34495e;
+    border-radius: 4px;
+}
+
+.digital-twin::-webkit-scrollbar-thumb {
+    background: #7f8c8d;
+    border-radius: 4px;
+}
+
+.digital-twin::-webkit-scrollbar-thumb:hover {
+    background: #95a5a6;
+}
